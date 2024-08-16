@@ -7,14 +7,19 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const cosmosDbUri: string | undefined = process.env.COSMOS_DB_URI;
 console.log(process.env.COSMOS_DB_URI);
 
 app.use(cors());
 app.use(express.json());
 
-const client = new MongoClient(process.env.COSMOS_DB_URI!);
+if (!cosmosDbUri) {
+  throw new Error('COSMOS_DB_URI is not defined in the environment variables.');
+}
+
+const client = new MongoClient(cosmosDbUri);
 client.connect().then(() => {
-  const db = client.db('jrfbActivityLogger');
+  const db = client.db('JRFBLogin');
   const usersCollection = db.collection('Usernames');
 
   app.post('/login', async (req: Request, res: Response) => {
