@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'public/**'
+      - 'Public/**'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
