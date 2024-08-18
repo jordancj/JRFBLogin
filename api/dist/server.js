@@ -20,7 +20,11 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8080;
 const cosmosDbUri = process.env.COSMOS_DB_URI;
-app.use((0, cors_1.default)());
+const corsOptions = {
+    origin: 'https://ashy-ocean-0062f3f00.5.azurestaticapps.net',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 if (!cosmosDbUri) {
     throw new Error('COSMOS_DB_URI is not defined in the environment variables.');
