@@ -11,7 +11,6 @@ const cosmosDbUri: string | undefined = process.env.COSMOS_DB_URI;
 const corsOptions = {
   origin: 'https://ashy-ocean-0062f3f00.5.azurestaticapps.net',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true
 }
 
 app.use(cors(corsOptions));
