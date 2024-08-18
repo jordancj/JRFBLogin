@@ -8,8 +8,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 const cosmosDbUri: string | undefined = process.env.COSMOS_DB_URI;
+const corsOptions = {
+  origin: 'https://ashy-ocean-0062f3f00.5.azurestaticapps.net/',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
 
-app.use(cors());
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 if (!cosmosDbUri) {
