@@ -39,7 +39,7 @@ jobs:
          # npm run test --if-present
 
       - name: compile typescript
-        run:
+        run: |
           cd api/src
           npx tsc
 
