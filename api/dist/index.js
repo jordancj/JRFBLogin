@@ -26,6 +26,7 @@ const corsOptions = {
 };
 app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
+console.log(cosmosDbUri);
 if (!cosmosDbUri) {
     throw new Error('COSMOS_DB_URI is not defined in the environment variables.');
 }
