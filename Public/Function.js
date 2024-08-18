@@ -52,7 +52,7 @@ function nonOperationalPage(){
 }
 
 function homePage(){
-    window.location.href = "Index.html"
+    window.location.href = "index.html"
 
 }
 
