@@ -40,18 +40,18 @@ jobs:
       - name: Build TypeScript files
         run: |
           cd api
-          npm run build
+          npm run build  # Assuming 'build' script in package.json runs 'tsc'
 
       - name: Zip artifact for deployment
         run: |
           cd api
-          zip -r release.zip .
+          zip -r release.zip .  # Ensure all files in the 'api' directory are included
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: api/release.zip
+          path: api/release.zip  # Ensure correct path to the zip file
 
   deploy:
     runs-on: ubuntu-latest
@@ -68,8 +68,11 @@ jobs:
         with:
           name: node-app
 
+      - name: List contents of directory
+        run: ls -la $GITHUB_WORKSPACE/api  # Debugging step to verify 'release.zip' exists
+
       - name: Unzip artifact for deployment
-        run: unzip api/release.zip -d $GITHUB_WORKSPACE/api  # Unzip into the 'api' directory
+        run: unzip $GITHUB_WORKSPACE/api/release.zip -d $GITHUB_WORKSPACE/api  # Unzip into the 'api' directory
 
       - name: Login to Azure
         uses: azure/login@v2
