@@ -1,14 +1,24 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - JRFBLogin
+name: Build and deploy API
 
 on:
   push:
     branches:
       - master
+    paths:
+      - 'api/**'
+      - 'package.json'
+      - 'tsconfig.json'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'api/**'
+      - 'package.json'
+      - 'tsconfig.json'
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
