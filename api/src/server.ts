@@ -24,7 +24,19 @@ client.connect().then(() => {
   app.post('/login', async (req: Request, res: Response) => {
     try {
       const { username } = req.body;
-      const user = await usersCollection.findOne({ username });
+      function sanitizeUsername(username: string): string{
+        const sanitized = username.trim().toLowerCase();
+        if (sanitized.length < 3 || sanitized.length > 20){
+          throw new Error('Invalid username length. Must be between 3 and 20 characters.');
+        }
+        if (/^[a-z.]+$/.test(sanitized)) {
+          return sanitized;
+        }
+        throw new Error ('Invalid username. Only letters and full stops are allowed')      ;
+      }
+      const sanitizedUsername = sanitizeUsername(username);
+      console.log(sanitizedUsername);
+      const user = await usersCollection.findOne({ username: sanitizedUsername });
 
       if (user) {
         res.status(200).json({ success: true });

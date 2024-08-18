@@ -20,7 +20,6 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
 const cosmosDbUri = process.env.COSMOS_DB_URI;
-console.log(process.env.COSMOS_DB_URI);
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 if (!cosmosDbUri) {
@@ -33,7 +32,19 @@ client.connect().then(() => {
     app.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { username } = req.body;
-            const user = yield usersCollection.findOne({ username });
+            function sanitizeUsername(username) {
+                const sanitized = username.trim().toLowerCase();
+                if (sanitized.length < 3 || sanitized.length > 20) {
+                    throw new Error('Invalid username length. Must be between 3 and 20 characters.');
+                }
+                if (/^[a-z.]+$/.test(sanitized)) {
+                    return sanitized;
+                }
+                throw new Error('Invalid username. Only letters and full stops are allowed');
+            }
+            const sanitizedUsername = sanitizeUsername(username);
+            console.log(sanitizedUsername);
+            const user = yield usersCollection.findOne({ username: sanitizedUsername });
             if (user) {
                 res.status(200).json({ success: true });
             }

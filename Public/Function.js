@@ -4,7 +4,7 @@ document.getElementById('login').addEventListener('submit', async (event) => {
 
     try{
 
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net', {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ document.getElementById('login').addEventListener('submit', async (event) => {
             window.location.href = "Selection.html";
         }else{
             console.error('Authentication failed: ', response.statusText);
-            alert("Invalid username. Please try again");
+            alert("Invalid username, usernames must be between 3 and 20 characters and only contain a full stop no special characters. Please try again");
         }
     } catch(error) {
         console.error('Error:', error);
