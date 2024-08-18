@@ -4,7 +4,7 @@ document.getElementById('login').addEventListener('submit', async (event) => {
 
     try{
 
-        const response = await fetch('ttps://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net', {
+        const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net', {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
