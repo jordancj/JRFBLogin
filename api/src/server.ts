@@ -9,12 +9,10 @@ const app = express();
 const port = process.env.PORT || 8080;
 const cosmosDbUri: string | undefined = process.env.COSMOS_DB_URI;
 const corsOptions = {
-  origin: 'https://ashy-ocean-0062f3f00.5.azurestaticapps.net/',
+  origin: 'https://ashy-ocean-0062f3f00.5.azurestaticapps.net',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true
-
 }
-app.options('*', cors(corsOptions));
 
 app.use(cors(corsOptions));
 
