@@ -45,20 +45,19 @@ jobs:
       - name: Zip artifact for deployment
         run: |
           cd api
-          zip -r ../release.zip .  # Go up one level and create zip in workspace root
+          zip -r ../release.zip .  # Create the zip file in the workspace root
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: release.zip  # No 'api/' prefix because it's in the workspace root
+          path: release.zip  # Zip file is in the workspace root
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write  # This is required for requesting the JWT
 
@@ -74,12 +73,15 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip -d $GITHUB_WORKSPACE/api  # Unzip into the 'api' directory
 
+      - name: List contents of unzipped directory
+        run: ls -la $GITHUB_WORKSPACE/api  # Verify the unzipped contents
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F471350ED59644D489E660119B8D1D6F }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_924BA22B90534FB397BCBC92B428B10A }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1984D4E3335247D98345FB8D605DDC54 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -87,4 +89,4 @@ jobs:
         with:
           app-name: 'JRFBLogin'
           slot-name: 'Production'
-          package: $GITHUB_WORKSPACE/api  # Ensure the correct path for deployment
+          package: $GITHUB_WORKSPACE/api
