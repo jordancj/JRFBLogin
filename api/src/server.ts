@@ -8,7 +8,6 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 const cosmosDbUri: string | undefined = process.env.COSMOS_DB_URI;
-console.log(process.env.COSMOS_DB_URI);
 
 app.use(cors());
 app.use(express.json());
