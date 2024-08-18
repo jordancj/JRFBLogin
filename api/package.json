@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
  "build": "tsc",
-    "start": "node dist/server.js", // Replace with your entry point
+ "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
