@@ -18,7 +18,7 @@ const mongodb_1 = require("mongodb");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 const cosmosDbUri = process.env.COSMOS_DB_URI;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
