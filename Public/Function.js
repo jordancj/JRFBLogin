@@ -1,36 +1,38 @@
-document.getElementById('login').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
+const loginForm = document.getElementById('login')
+if(loginForm)
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
 
-    try{
+        try{
 
-        const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                username:username
-            })
-        });
-        const data = await response.json();
+            const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    username:username
+                })
+            });
+            const data = await response.json();
 
-        if (response.ok && data.success){
-            sessionStorage.setItem('authToken', data.token);
-            console.log(data.token)
-            console.log('Authentication successful:', data);
-            sessionStorage.setItem('username', username);
-            window.location.href = "Selection.html";
-        }else{
-            console.error('Authentication failed: ', data.statusText);
-            alert("Invalid username, usernames must be between 3 and 20 characters and only contain a full stop no special characters. Please try again");
+            if (response.ok && data.success){
+                sessionStorage.setItem('authToken', data.token);
+                console.log(data.token)
+                console.log('Authentication successful:', data);
+                sessionStorage.setItem('username', username);
+                window.location.href = "Selection.html";
+            }else{
+                console.error('Authentication failed: ', data.statusText);
+                alert("Invalid username, usernames must be between 3 and 20 characters and only contain a full stop no special characters. Please try again");
+            }
+        } catch(error) {
+            console.error('Error:', error);
+            alert('An error has occured, please try again');
         }
-    } catch(error) {
-        console.error('Error:', error);
-        alert('An error has occured, please try again');
-    }
-});
+    });
 
 document.querySelectorAll('.activity button').forEach(button =>{
     button.addEventListener('click', function(event){
@@ -47,6 +49,36 @@ document.querySelectorAll('.activity button').forEach(button =>{
     })
 })
 
+document.addEventListener('DOMContentLoaded', function(){
+    const buttons = document.querySelectorAll('.selectable-button')
+    const submitButton = document.getElementById('Submit')
+    let selectedValue = '';
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(){
+            buttons.forEach(btn => btn.classList.remove('selected'));
+
+            this.classList.add('selected');
+
+            selectedValue = this.getAttribute('data-value');
+        });
+    });
+    if (submitButton){
+        submitButton.addEventListener('click', function(){
+            if(!selectedValue){
+                alert("Please select an option before submitting");
+                return;
+            }
+            var username = sessionStorage.getItem('username')
+            username = username.replace(/\./g, ' ');
+            const activitySelection = sessionStorage.getItem('activitySelection')
+            const currentTimeStamp = new Date().toLocaleString();
+            console.log(currentTimeStamp, username, activitySelection, selectedValue);
+            sessionStorage.clear();
+            window.location.href = 'index.html';
+        })
+        }
+    })
 function operationalPage(){
     window.location.href = "Operational.html";
 

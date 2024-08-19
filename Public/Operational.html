@@ -18,18 +18,15 @@
     <h1 id="opActTitle"> Select Operational Activity</h1>  
     <!--Operational selection buttons-->
     <div class = 'operationalButtons'>
-        <button id="firecall" data-value = "firecall">Firecall
-        </button>
-        <button id="Strike-Team" data-value = "Strike-Team" >Strike Team
-      </button>
-        <button id="Deployment" data-value = "Deployment" >Deployment
-        </button>
-        <button id="Other-operational" data-value = "Other-operational" >Other
-        </button>
-      </div>
-      <div class="buttons">
-        <button id="back-button" type="button" onclick = "goBack()">Back</button>
-      </div>
+        <button id="firecall" class="selectable-button" data-value = "firecall">Firecall</button>
+        <button id="Strike-Team" class="selectable-button" data-value = "Strike-Team" >Strike Team</button>
+        <button id="Deployment" class="selectable-button" data-value = "Deployment" >Deployment</button>
+        <button id="Other-operational" class="selectable-button" data-value = "Other-operational" >Other</button>
+    </div>
+        <button id="Submit" type="submit"> Submit </button>
+    <div class="buttons">
+      <button id="back-button" type="button" onclick = "goBack()">Back</button>
+    </div>
 <script src="Function.js"></script>
 </body>
 </html>
