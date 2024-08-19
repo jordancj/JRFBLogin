@@ -1,5 +1,20 @@
 const loginForm = document.getElementById('login')
+function sanitizeInput(input){
+    const regex = /^[a-zA-z.]+$/;
+    let sanitizedInput = '';
+
+    for (let i = 0; i <input.length; i++) {
+        if (regex.test(input[i])) {
+            sanitizedInput += input[i];
+        }
+    }
+    return sanitizedInput
+}
 if(loginForm)
+    document.getElementById('username').addEventListener('input', function(){
+        const sanitizedValue = sanitizeInput(this.value);
+        this.value = sanitizedValue;
+});
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const username = document.getElementById('username').value;
