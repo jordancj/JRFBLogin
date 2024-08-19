@@ -14,7 +14,7 @@ if(loginForm)
     document.getElementById('username').addEventListener('input', function(){
         const sanitizedValue = sanitizeInput(this.value);
         this.value = sanitizedValue;
-});
+    });
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const username = document.getElementById('username').value;
