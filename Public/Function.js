@@ -5,7 +5,7 @@ if(loginForm)
         const username = document.getElementById('username').value;
 
         try{
-
+            //post to API
             const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
                 method: 'POST',
                 headers:{
@@ -16,8 +16,9 @@ if(loginForm)
                     username:username
                 })
             });
+            //wait for response from API
             const data = await response.json();
-
+            
             if (response.ok && data.success){
                 sessionStorage.setItem('authToken', data.token);
                 console.log(data.token)
