@@ -1,102 +1,51 @@
-body{
-    background: url('background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: Helvetica, Arial, Sans-serif;
+body {
+  background: url('background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: Helvetica, Arial, Sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.index{
-  margin-left: 25%
-  }
-body.page1{
-  margin-left:20%;
-}
-body.page2{
-  margin-left:20%;
-}
-body.page3{
-  margin-left:20%;
-}
 
-h1.main-title{
-    width: fit-content;
-    border: 2px solid black;
-    border-radius: 20px;
-    text-align: center;
-    padding: 15px 30px;
-    background-color: #eb1919;
-    margin-left: 17%;
-    
-
-}
-
-#opActTitle{
+h1.main-title, #opActTitle, #noOpActTitle, #OpTitle {
   width: fit-content;
   border: 2px solid black;
   border-radius: 20px;
   text-align: center;
   padding: 15px 30px;
   background-color: #eb1919;
-  margin: 10px auto 20px 180px;
-  
-
+  margin: 10px auto; /* Center horizontally */
 }
-
-#noOpActTitle{
-  width: fit-content;
-  border: 2px solid black;
-  border-radius: 20px;
-  text-align: center;
-  padding: 15px 30px;
-  background-color: #eb1919;
-  margin: 10px auto 20px 120px;
-  
-
-}
-#OpTitle{
-  width: fit-content;
-  border: 2px solid black;
-  border-radius: 20px;
-  text-align: center;
-  padding: 15px 30px;
-  background-color: #eb1919;
-  margin: 10px auto 20px -50px;
-  
-
-}
-
 
 form#login {
-    border: 3px solid #f1f1f1;
-    background-color: lightgray;
-    width: 175px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    margin: 0 auto 20px 280px;
-    
-  }
+  border: 3px solid #f1f1f1;
+  background-color: lightgray;
+  width: 175px;
+  padding: 10px;
+  margin: 0 auto 20px auto; /* Center horizontally */
+  transform: scale(1.5); /* Increase size */
+  margin-top: 10%;
+  justify-content: center;
+}
 
-h3.subtitle{
-margin-left: 280px;
+h3.subtitle {
+  margin: 0 auto;
+  text-align: center;
+}
 
-  }
-
-#login{
+#login {
   margin: 10px 0 0 65px;
-    
-    
 }
 
 .activity, 
 .operationalButtons, 
 .nonOperationalButtons {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: repeat(2, 1fr); /* Create 2 equal-width columns */
-  grid-gap: 20px; /* Space between grid items */
-  justify-content: center; /* Center the grid items horizontally */
-  padding: 20px; /* Add padding around the grid container */
-  margin-right: 20%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  justify-content: center;
+  padding: 20px;
 }
 
 .activity button, 
@@ -108,13 +57,14 @@ margin-left: 280px;
   border: none;
   border-radius: 8px;
   color: white;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 #back-button {
   position: absolute;
   top: 2%;
   left: 2%;
-  padding: 1em 2em; 
+  padding: 1em 2em;
   font-size: 1em;
   cursor: pointer;
   border: none;
@@ -123,13 +73,14 @@ margin-left: 280px;
   color: white;
   transition: background-color 0.3s ease;
 }
+
 .buttons button#back-button:hover {
   background-color: #333;
   transform: scale(1.05);
 }
 
 #Submit {
-  position:fixed;
+  position: fixed;
   background-color: #555;
   padding: 20px 40px;
   font-size: 24px;
@@ -138,7 +89,8 @@ margin-left: 280px;
   border-radius: 8px;
   color: white;
   justify-content: center;
-  left: 46%;
+  left: 50%;
+  transform: translateX(-50%);
   top: 70%;
 }
 
@@ -151,11 +103,71 @@ margin-left: 280px;
 .activity button:hover, 
 .operationalButtons button:hover, 
 .nonOperationalButtons button:hover {
-  background-color: #333; /* Darker shade on hover */
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  background-color: #333;
+  transform: scale(1.05);
 }
 
-.selected{
-  background-color: #333;
-  transform: scale(1.05)
+.selected {
+  background-color: #333 !important;
+  transform: scale(1.05);
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+  }
+
+  .index, body.page1, body.page2, body.page3 {
+      margin-left: 0;
+  }
+
+  h1.main-title, #opActTitle, #noOpActTitle, #OpTitle {
+      margin: 20px auto;
+      width: 90%;
+      padding: 10px 20px;
+      font-size: 18px;
+  }
+
+  form#login {
+      width: 90%;
+      transform: scale(1); /* Normalize size on mobile */
+      margin-top: 20%;
+      padding: 20px;
+  }
+
+  h3.subtitle {
+      margin-left: 0;
+      text-align: center;
+  }
+
+  .activity, 
+  .operationalButtons, 
+  .nonOperationalButtons {
+      grid-template-columns: 1fr; /* Single column on mobile */
+      margin-right: 0;
+      padding: 10px;
+  }
+
+  .activity button, 
+  .operationalButtons button, 
+  .nonOperationalButtons button {
+      padding: 15px 20px;
+      font-size: 20px;
+  }
+
+  #Submit {
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px;
+      font-size: 18px;
+  }
+
+  #back-button {
+      padding: 10px 20px;
+      font-size: 16px;
+  }
 }
