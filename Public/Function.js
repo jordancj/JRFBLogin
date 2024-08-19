@@ -10,7 +10,7 @@ function sanitizeInput(input){
     }
     return sanitizedInput
 }
-if(loginForm)
+if(loginForm){
     document.getElementById('username').addEventListener('input', function(){
         const sanitizedValue = sanitizeInput(this.value);
         this.value = sanitizedValue;
@@ -49,7 +49,7 @@ if(loginForm)
             alert('An error has occured, please try again');
         }
     });
-
+}
 document.querySelectorAll('.activity button').forEach(button =>{
     button.addEventListener('click', function(event){
         const value = event.target.getAttribute('data-value');
