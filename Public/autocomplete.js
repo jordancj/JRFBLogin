@@ -1,6 +1,6 @@
 async function fetchNames(query) {
     try {
-        const response = await fetch('http://127.0.0.1:3000/api/names', {
+        const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/api/names', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
