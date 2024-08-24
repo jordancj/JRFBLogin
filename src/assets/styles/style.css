@@ -163,6 +163,7 @@ h3.subtitle {
 
   .index, body.page1, body.page2, body.page3 {
       margin-left: 0;
+      margin-top: 5%;
   }
 
   h1.main-title, #opActTitle, #noOpActTitle, #OpTitle {
