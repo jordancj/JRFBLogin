@@ -153,6 +153,11 @@ h3.subtitle {
       padding: 0;
       width: 100%;
   }
+  
+  main, footer, header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
   .index, body.page1, body.page2, body.page3 {
       margin-left: 0;
