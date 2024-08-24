@@ -152,11 +152,13 @@ h3.subtitle {
       margin: 0;
       padding: 0;
       width: 100%;
+      min-height: 100%;
   }
   
   main, footer, header {
     margin-bottom: 0;
     padding-bottom: 0;
+    min-height: 100%
   }
 
   .index, body.page1, body.page2, body.page3 {
@@ -176,6 +178,11 @@ h3.subtitle {
       margin-top: 20%;
       padding: 20px;
   }
+  button#login{
+    margin-left: 40%;
+    transform: scale(1.5);
+  }
+
 
   h3.subtitle {
       margin-left: 0;
