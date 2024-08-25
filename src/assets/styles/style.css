@@ -163,7 +163,7 @@ h3.subtitle {
 
   .index, body.page1, body.page2, body.page3 {
       margin-left: 0;
-      margin-top: 5%;
+      margin-top: 20%;
   }
 
   h1.main-title, #opActTitle, #noOpActTitle, #OpTitle {
@@ -211,7 +211,13 @@ h3.subtitle {
       transform: translateX(-50%);
       padding: 15px;
       font-size: 18px;
+
   }
+  body.page3 #Submit{
+    position: absolute;
+    margin-top: 40%
+  }
+
 
   #back-button {
       padding: 10px 20px;
