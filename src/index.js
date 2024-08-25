@@ -122,21 +122,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-function operationalPage(){
-    window.location.href = "Operational.html";
-
-}
-function nonOperationalPage(){
-    window.location.href = "NonOperational.html";
-
-}
-
-function homePage(){
-    window.location.href = "index.html"
-
-}
-
-function goBack(){
-    window.history.back();
-
-}
