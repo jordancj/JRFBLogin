@@ -87,14 +87,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const currentTimeStamp = Date.now();  // Get Unix timestamp in milliseconds
+            const currentTimeStamp = new Date();  // Get ISODate format timestamp
             let username = sessionStorage.getItem('username');
             username = username.replace(/\./g, ' ');  // Replace dots with spaces
             const activitySelection = sessionStorage.getItem('activitySelection');
 
             // Prepare the data object
             const data = {
-                timestamp: currentTimeStamp,  // Store Unix timestamp in milliseconds
+                timestamp: currentTimeStamp,  // Store Date object directly
                 name: username,
                 operational: activitySelection,
                 activity: activity
