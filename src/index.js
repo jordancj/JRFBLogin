@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const currentTimeStamp = new Date().toLocaleString();
+            const currentTimeStamp = Date.now();  // Get Unix timestamp in milliseconds
             let username = sessionStorage.getItem('username');
             username = username.replace(/\./g, ' ');  // Replace dots with spaces
-            const activitySelection = sessionStorage.getItem('activitySelection'); 
+            const activitySelection = sessionStorage.getItem('activitySelection');
 
             const data = {
                 timestamp: currentTimeStamp,
