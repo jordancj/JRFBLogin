@@ -92,10 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
             username = username.replace(/\./g, ' ');  // Replace dots with spaces
             const activitySelection = sessionStorage.getItem('activitySelection');
 
+            // Prepare the data object
             const data = {
-                timestamp: {
-                    "$date" : currentTimeStamp
-                },
+                timestamp: currentTimeStamp,  // Store Unix timestamp in milliseconds
                 name: username,
                 operational: activitySelection,
                 activity: activity
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 function goBack(){
     window.history.back();
-
 }
