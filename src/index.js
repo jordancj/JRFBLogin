@@ -1,70 +1,3 @@
-const loginForm = document.getElementById('login')
-function sanitizeInput(input){
-    const regex = /^[a-zA-z.]+$/;
-    let sanitizedInput = '';
-
-    for (let i = 0; i <input.length; i++) {
-        if (regex.test(input[i])) {
-            sanitizedInput += input[i];
-        }
-    }
-    return sanitizedInput
-}
-if(loginForm){
-    document.getElementById('username').addEventListener('input', function(){
-        const sanitizedValue = sanitizeInput(this.value);
-        this.value = sanitizedValue;
-    });
-    loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-
-        try{
-            //post to API
-            const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include',
-                body: JSON.stringify({
-                    username:username
-                })
-            });
-            //wait for response from API
-            const data = await response.json();
-            
-            if (response.ok && data.success){
-                sessionStorage.setItem('authToken', data.token);
-                console.log(data.token)
-                console.log('Authentication successful:', data);
-                sessionStorage.setItem('username', username);
-                window.location.href = "Selection.html";
-            }else{
-                console.error('Authentication failed: ', data.statusText);
-                alert("Invalid username, usernames must be between 3 and 20 characters and only contain a full stop no special characters. Please try again");
-            }
-        } catch(error) {
-            console.error('Error:', error);
-            alert('An error has occured, please try again');
-        }
-    });
-}
-document.querySelectorAll('.activity button').forEach(button =>{
-    button.addEventListener('click', function(event){
-        const value = event.target.getAttribute('data-value');
-        console.log(value)
-        sessionStorage.setItem('activitySelection', value);
-        if (value == 'Operational'){
-            window.location.href = "Operational.html"
-        }
-        else if(value == 'Non-Operational'){
-            window.location.href = "NonOperational.html"
-
-        }
-    })
-})
-
 document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.selectable-button');
     const submitButton = document.getElementById('Submit');
@@ -87,13 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const currentTimeStamp = new Date().toLocaleString();
+            const currentTimeStamp = Date.now();  // Get Unix timestamp in milliseconds
             let username = sessionStorage.getItem('username');
             username = username.replace(/\./g, ' ');  // Replace dots with spaces
             const activitySelection = sessionStorage.getItem('activitySelection'); 
 
             const data = {
-                timestamp: currentTimeStamp,
+                timestamp: currentTimeStamp,  // Unix timestamp
                 name: username,
                 operational: activitySelection,
                 activity: activity
@@ -122,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-function goBack(){
-    window.history.back();
 
+function goBack() {
+    window.history.back();
 }
