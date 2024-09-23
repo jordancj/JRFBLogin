@@ -93,7 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const activitySelection = sessionStorage.getItem('activitySelection');
 
             const data = {
-                timestamp: currentTimeStamp,
+                timestamp: {
+                    "$date" : currentTimeStamp
+                },
                 name: username,
                 operational: activitySelection,
                 activity: activity
