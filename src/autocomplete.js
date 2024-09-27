@@ -1,8 +1,6 @@
-const apiURL = import.meta.env.PARCEL_API_URL;
-console.log(import.meta.env)
 async function fetchNames(query) {
     try {
-        const response = await fetch(`${apiURL}/api/names`, {
+        const response = await fetch(`https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/api/names`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
