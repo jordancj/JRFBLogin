@@ -1,4 +1,6 @@
+const apiURL = import.meta.env.PARCEL_API_URL;
 const loginForm = document.getElementById('login')
+console.log(import.meta.env);
 function sanitizeInput(input){
     const regex = /^[a-zA-z.]+$/;
     let sanitizedInput = '';
@@ -21,7 +23,7 @@ if(loginForm){
 
         try{
             //post to API
-            const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
+            const response = await fetch(`${apiURL}/login`, {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',
@@ -101,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/submit', {
+                const response = await fetch(`${apiURL}/submit`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -127,3 +129,4 @@ document.addEventListener('DOMContentLoaded', function() {
 function goBack(){
     window.history.back();
 }
+window.goBack = goBack;
