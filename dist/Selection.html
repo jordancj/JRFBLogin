@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="title">Operational Selection</title>
+    <link rel="stylesheet" href="/index.6d0d14a7.css">
+    <script>function checkAuthToken() {
+    const token = sessionStorage.getItem("authToken");
+    if (!token) window.location.href = "index.html";
+}
+checkAuthToken();
+
+</script>
+</head>
+<body class="page1">
+    <h1 id="OpTitle">Was your attendance operational or non operational?</h1>  
+    <!-- Operational selection buttons -->
+    <div class="activity">
+        <button id="operational" data-value="Operational">Operational</button>
+        <button id="non-operational" data-value="Non-Operational">Non-Operational</button>
+    </div>
+    <button id="back-button" onclick="goBack()">Back</button>
+<script src="/index.975ef6c8.js" defer=""></script>
+</body>
+</html>
