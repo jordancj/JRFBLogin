@@ -1,5 +1,5 @@
-const apiURL = process.env.API_URL;
-console.log(process.env)
+const apiURL = import.meta.env.API_URL;
+console.log(import.meta.env)
 async function fetchNames(query) {
     try {
         const response = await fetch(`${apiURL}/api/names`, {

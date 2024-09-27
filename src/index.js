@@ -1,6 +1,6 @@
-const apiURL = process.env.API_URL;
+const apiURL = import.meta.env.API_URL;
 const loginForm = document.getElementById('login')
-console.log(process.env);
+console.log(import.meta.env);
 function sanitizeInput(input){
     const regex = /^[a-zA-z.]+$/;
     let sanitizedInput = '';
