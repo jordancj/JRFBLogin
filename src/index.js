@@ -1,4 +1,4 @@
-const apiURL = import.meta.env.API_URL;
+const apiURL = import.meta.env.PARCEL_API_URL;
 const loginForm = document.getElementById('login')
 console.log(import.meta.env);
 function sanitizeInput(input){
