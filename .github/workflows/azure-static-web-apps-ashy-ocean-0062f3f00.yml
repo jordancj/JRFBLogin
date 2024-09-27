@@ -38,7 +38,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ASHY_OCEAN_0062F3F00 }}
           action: "upload"
-          app_location: "/src" 
+          app_location: "/" 
           output_location: "dist"  # This is where Parcel outputs the build files
 
   close_pull_request_job:
