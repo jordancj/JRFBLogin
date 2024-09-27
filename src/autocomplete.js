@@ -1,6 +1,8 @@
+const apiURL = process.env.API_URL;
+console.log(process.env)
 async function fetchNames(query) {
     try {
-        const response = await fetch(`https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/api/names`, {
+        const response = await fetch(`${apiURL}/api/names`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
