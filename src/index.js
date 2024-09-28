@@ -21,7 +21,7 @@ if(loginForm){
 
         try{
             //post to API
-            const response = await fetch('jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
+            const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch('jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/submit', {
+                const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
