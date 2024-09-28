@@ -21,7 +21,7 @@ if(loginForm){
 
         try{
             //post to API
-            const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
+            const response = await fetch('jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',
@@ -86,8 +86,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert("Please select an option before submitting");
                 return;
             }
-
-            const currentTimeStamp = new Date();  // Get the current timestamp as a Date object
+            const backdate = document.getElementById('inputDate').value;
+            let currentTimeStamp;
+            if (backdate){
+                currentTimeStamp = new Date(backdate)
+                currentTimeStamp.setHours(0, 0, 0, 0)
+            } else {
+                currentTimeStamp = new Date();
+            }
+            console.log(currentTimeStamp)
             let username = sessionStorage.getItem('username');
             username = username.replace(/\./g, ' ');  // Replace dots with spaces
             const activitySelection = sessionStorage.getItem('activitySelection');
@@ -101,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/submit', {
+                const response = await fetch('jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -123,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 function goBack(){
     window.history.back();

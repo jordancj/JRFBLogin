@@ -19,12 +19,19 @@
     <h1 id="opActTitle"> Select Operational Activity</h1>  
     <!--Operational selection buttons-->
     <div class = 'operationalButtons'>
-        <button id="firecall" class="selectable-button" data-value = "firecall">Firecall</button>
+        <button id="Incident-Call" class="selectable-button" data-value = "Incident-Call">Incident Call</button>
         <button id="Strike-Team" class="selectable-button" data-value = "Strike-Team" >Strike Team</button>
         <button id="Deployment" class="selectable-button" data-value = "Deployment" >Deployment</button>
         <button id="Hazard-Reduction" class="selectable-button" data-value = "Hazard-Reduction" >Hazard Reduction</button>
+        <button id="Pile-Burn" class="selectable-button" data-value = "Pile-Burn" >Pile Burn</button>
         <button id="Other-operational" class="selectable-button" data-value = "Other-operational" >Other</button>
     </div>
+        <form id="date">
+            <div id="dateContainer">
+            <label for="inputDate" class="backdate">Backdate (optional):</label>
+            <input autocomplete="off" type="date" name="inputDate" id="inputDate" placeholder="Optional: Enter date dd/mm/yyyy">       
+            </div>
+        </form> 
         <button id="Submit" type="submit"> Submit </button>
     <div class="buttons">
       <button id="back-button" type="button" onclick = "goBack()">Back</button>

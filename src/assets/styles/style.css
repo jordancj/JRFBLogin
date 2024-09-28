@@ -37,6 +37,28 @@ form#login {
 
 }
 
+form#date {
+  display: block;
+  background-color: #555;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  width: fit-content;
+  height: auto;
+  font-size: 15px;
+  margin: 0 auto 20px auto; /* Center horizontally */
+}
+
+label.backdate{
+  color: white;
+}
+#dateContainer{
+  position: relative; /* Positioning container for absolute positioning of name-list */
+  padding-top: 5px;
+  width: 100%; /* Make it as wide as the form */
+
+}
+
 #username {
   width: 100%; /* Ensures it takes up the full width of the container */
   box-sizing: border-box; /* Includes padding and border in the total width and height */
@@ -114,7 +136,7 @@ h3.subtitle {
 }
 
 #Submit {
-  position: fixed;
+  display: block;
   background-color: #555;
   padding: 20px 40px;
   font-size: 24px;
@@ -125,7 +147,8 @@ h3.subtitle {
   justify-content: center;
   left: 50%;
   transform: translateX(-50%);
-  top: 70%;
+  position: relative;
+  top: 0; /* Adjust if needed */
 }
 
 .activity button, 
@@ -145,6 +168,11 @@ h3.subtitle {
   background-color: #333 !important;
   transform: scale(1.05);
 }
+.activity-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 
 /* Mobile Styles */
 @media (max-width: 600px) {
