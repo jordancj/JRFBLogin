@@ -137,13 +137,16 @@ h3.subtitle {
 
 #Submit {
   display: block;
-  background-color: #555;
+  background-color: #eb1919; /*Changed to red so hannah can find it*/
   padding: 20px 40px;
   font-size: 24px;
+  font-weight:  bold;
   cursor: pointer;
-  border: none;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
   border-radius: 8px;
-  color: white;
+  color: black;
   justify-content: center;
   left: 50%;
   transform: translateX(-50%);
