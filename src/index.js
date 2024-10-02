@@ -1,107 +1,105 @@
-const loginForm = document.getElementById('login')
-function sanitizeInput(input){
+const loginForm = document.getElementById('login');
+function sanitizeInput(input) {
     const regex = /^[a-zA-z.]+$/;
     let sanitizedInput = '';
 
-    for (let i = 0; i <input.length; i++) {
+    for (let i = 0; i < input.length; i++) {
         if (regex.test(input[i])) {
             sanitizedInput += input[i];
         }
     }
-    return sanitizedInput
+    return sanitizedInput;
 }
-if(loginForm){
-    document.getElementById('username').addEventListener('input', function(){
+
+if (loginForm) {
+    document.getElementById('username').addEventListener('input', function () {
         const sanitizedValue = sanitizeInput(this.value);
         this.value = sanitizedValue;
     });
+
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const username = document.getElementById('username').value;
 
-        try{
-            //post to API
+        try {
             const response = await fetch('https://jrfblogin-a8dhhtczbwabe8at.australiaeast-01.azurewebsites.net/login', {
                 method: 'POST',
-                headers:{
+                headers: {
                     'Content-Type': 'application/json',
                 },
                 credentials: 'include',
-                body: JSON.stringify({
-                    username:username
-                })
+                body: JSON.stringify({ username: username })
             });
-            //wait for response from API
+
             const data = await response.json();
-            
-            if (response.ok && data.success){
+
+            if (response.ok && data.success) {
                 sessionStorage.setItem('authToken', data.token);
-                console.log(data.token)
-                console.log('Authentication successful:', data);
                 sessionStorage.setItem('username', username);
                 window.location.href = "Selection.html";
-            }else{
-                console.error('Authentication failed: ', data.statusText);
-                alert("Invalid username, usernames must be between 3 and 20 characters and only contain a full stop no special characters. Please try again");
+            } else {
+                alert("Invalid username, usernames must be between 3 and 20 characters and only contain a full stop. Please try again.");
             }
-        } catch(error) {
-            console.error('Error:', error);
-            alert('An error has occured, please try again');
+        } catch (error) {
+            alert('An error has occurred, please try again');
         }
     });
 }
-document.querySelectorAll('.activity button').forEach(button =>{
-    button.addEventListener('click', function(event){
+
+document.querySelectorAll('.activity button').forEach(button => {
+    button.addEventListener('click', function (event) {
         const value = event.target.getAttribute('data-value');
-        console.log(value)
         sessionStorage.setItem('activitySelection', value);
-        if (value == 'Operational'){
-            window.location.href = "Operational.html"
+        if (value === 'Operational') {
+            window.location.href = "Operational.html";
+        } else if (value === 'Non-Operational') {
+            window.location.href = "NonOperational.html";
         }
-        else if(value == 'Non-Operational'){
-            window.location.href = "NonOperational.html"
+    });
+});
 
-        }
-    })
-})
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.selectable-button');
     const submitButton = document.getElementById('Submit');
     let selectedValue = '';
 
     buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            buttons.forEach(btn => btn.classList.remove('selected'));
-            this.classList.add('selected');
-            selectedValue = this.getAttribute('data-value');
-            sessionStorage.setItem('activity', selectedValue); // Store the selected value in sessionStorage
+        button.addEventListener('click', function () {
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedValue = '';
+                sessionStorage.removeItem('activity');
+            } else {
+                buttons.forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedValue = this.getAttribute('data-value');
+                sessionStorage.setItem('activity', selectedValue);
+            }
         });
     });
 
     if (submitButton) {
-        submitButton.addEventListener('click', async function() {
-            const activity = sessionStorage.getItem('activity');  // Retrieve the selected activity
+        submitButton.addEventListener('click', async function () {
+            const activity = sessionStorage.getItem('activity');
             if (!activity) {
                 alert("Please select an option before submitting");
                 return;
             }
             const backdate = document.getElementById('inputDate').value;
             let currentTimeStamp;
-            if (backdate){
-                currentTimeStamp = new Date(backdate)
-                currentTimeStamp.setHours(0, 0, 0, 0)
+            if (backdate) {
+                currentTimeStamp = new Date(backdate);
+                currentTimeStamp.setHours(0, 0, 0, 0);
             } else {
                 currentTimeStamp = new Date();
             }
-            console.log(currentTimeStamp)
+
             let username = sessionStorage.getItem('username');
-            username = username.replace(/\./g, ' ');  // Replace dots with spaces
+            username = username.replace(/\./g, ' '); // Replace dots with spaces
             const activitySelection = sessionStorage.getItem('activitySelection');
 
-            // Prepare the data object
             const data = {
-                timestamp: currentTimeStamp,  // Pass the Date object, NOT a string
+                timestamp: currentTimeStamp,
                 name: username,
                 operational: activitySelection,
                 activity: activity
@@ -117,21 +115,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (response.ok) {
-                    console.log('Data submitted successfully');
-                    console.log(data);
                     sessionStorage.clear();
-                    window.location.href = 'index.html'; 
+                    window.location.href = 'index.html';
                 } else {
-                    console.error('Failed to submit data');
+                    alert('Failed to submit data, please try again.');
                 }
             } catch (error) {
-                console.error('Error submitting data', error);
+                alert('Error submitting data, please try again.');
             }
         });
     }
 });
 
-
-function goBack(){
+function goBack() {
     window.history.back();
 }

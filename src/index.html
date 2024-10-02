@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-<link rel="manifest" href="assets/images/site.webmanifest">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JRFB sign in</title>
-    <link rel="stylesheet" href="assets/styles/style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="manifest" href="assets/images/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JRFB sign in</title>
+  <link rel="stylesheet" href="assets/styles/style.css">
 </head>
+
 <body>
   <!--login main page-->
-    <h1 class="main-title"> JRFB Attendance Log</h1> 
-   <!--username post to server--> 
-    <form id="login" action="">
-        <div id = "username-container">
-        <label for="username"> Username: </label>
-        <input autocomplete="off" type="text" name="username" id="username" placeholder="Enter your username" required>
-        <button id="login" type="submit">Login</button>
-        <div id="name-list"></div>
-      </div>
-    </form>
-    <script src="index.js"></script>
-    <script src="autocomplete.js"></script>  
+  <h1 class="main-title"> JRFB Attendance Log</h1>
+  <!--username post to server-->
+  <form id="login" action="">
+    <div id="username-container">
+      <label for="username"> Username: </label>
+      <input autocomplete="off" type="text" name="username" id="username" placeholder="Enter your username" required>
+      <button id="login" type="submit">Login</button>
+      <div id="name-list"></div>
+    </div>
+  </form>
+  <script src="index.js"></script>
+  <script src="autocomplete.js"></script>
 </body>
+
 </html>

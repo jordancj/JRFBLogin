@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
@@ -9,24 +10,25 @@
     <title class="title">Operational Selection</title>
     <link rel="stylesheet" href="assets/styles/style.css">
     <script>
-         function checkAuthToken(){
+        function checkAuthToken() {
             const token = sessionStorage.getItem('authToken');
-            if (!token){
+            if (!token) {
                 window.location.href = 'index.html'
             }
-
-         }
-         checkAuthToken();
+        }
+        checkAuthToken();
     </script>
 </head>
+
 <body class="page1">
-    <h1 id="OpTitle">Was your attendance operational or non operational?</h1>  
+    <h1 id="OpTitle">Was your attendance operational or non operational?</h1>
     <!-- Operational selection buttons -->
     <div class="activity">
-        <button id="operational" data-value = "Operational">Operational</button>
-        <button id="non-operational" data-value = "Non-Operational">Non-Operational</button>
+        <button id="operational" data-value="Operational">Operational</button>
+        <button id="non-operational" data-value="Non-Operational">Non-Operational</button>
     </div>
-    <button id="back-button" onclick = "goBack()">Back</button>
-<script src="index.js"></script>
+    <button id="back-button" onclick="goBack()">Back</button>
+    <script src="index.js"></script>
 </body>
+
 </html>
