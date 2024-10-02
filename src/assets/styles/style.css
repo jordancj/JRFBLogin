@@ -180,10 +180,10 @@ h3.subtitle {
 /* Mobile Styles */
 @media (max-width: 600px) {
   body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
+    height: 100%; /* Make sure the body and html take up the full height */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
   }
   
   main, footer, header {
@@ -224,9 +224,12 @@ h3.subtitle {
   .activity, 
   .operationalButtons, 
   .nonOperationalButtons {
-      grid-template-columns: 1fr; /* Single column on mobile */
-      margin-right: 0;
-      padding: 10px;
+    flex: 1; /* Allow buttons to grow and fill available space */
+    display: grid; /* Use grid layout */
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-gap: 20px; /* Space between buttons */
+    justify-content: center; /* Center the buttons */
+    padding: 20px;
   }
 
   .activity button, 
@@ -237,16 +240,18 @@ h3.subtitle {
   }
 
   #Submit {
-      width: 80%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 15px;
-      font-size: 18px;
-
+    position: fixed; /* Keep the button at the bottom */
+    bottom: 20px; /* 20px from the bottom of the screen */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    width: 80%;
+    z-index: 10; /* Ensure it stays on top of other content */
   }
-  body.page3 #Submit{
-    position: absolute;
-    margin-top: 40%
+  body.page3 {
+    display: flex;
+    flex-direction: column; /* Stack elements in a vertical column */
+    justify-content: space-between; /* Space out the elements */
+    min-height: 100vh; /* Ensure the page takes up full height of the viewport */
   }
 
 
