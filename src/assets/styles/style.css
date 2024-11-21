@@ -207,6 +207,34 @@ h3.subtitle {
   background-color: #333;
   transform: scale(1.05);
 }
+.popup{
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  color:white;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeout 1s ease-out 3s forwards ;
+ 
+
+}
+.popup.success {
+  background-color: #4caf50; /* Green for success */
+}
+.popup.error {
+  background-color: #f44336; /* Red for error */
+}
+
+@keyframes fadeout{
+  to{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
 
 /* Mobile Styles */
 /* Mobile-Specific Adjustments */

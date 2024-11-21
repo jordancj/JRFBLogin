@@ -117,15 +117,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     sessionStorage.clear();
                     window.location.href = 'index.html';
+                    showPopup("Successful!", "success")
                 } else {
                     alert('Failed to submit data, please try again.');
+                    window.location.href = 'index.html';
                 }
             } catch (error) {
                 alert('Error submitting data, please try again.');
+                console.error(error.message)
             }
         });
     }
 });
+
+function showPopup(message, type){
+    const popup = documernt.getElementById("popup");
+
+    popup.textContent = message;
+    popup.className = `popup ${type}`
+    popup.style.display = block;
+
+    setTimeout(() => {
+        popup.style.display = none;
+    },  4000);
+
+}
 
 function goBack() {
     window.history.back();
