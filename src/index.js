@@ -115,33 +115,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 if (response.ok) {
+                    const message = encodeURIComponent("Attendance logged successfully!");
+                    const type = encodeURIComponent("success");
+                    window.location.href = `/index.html?popupMessage=${message}&popupType=${type}`;
                     sessionStorage.clear();
-                    window.location.href = 'index.html';
-                    showPopup("Successful!", "success")
                 } else {
-                    alert('Failed to submit data, please try again.');
+                    alert("An error has occured please try again")
                     window.location.href = 'index.html';
+                    sessionStorage.clear();
                 }
             } catch (error) {
-                alert('Error submitting data, please try again.');
-                console.error(error.message)
-            }
+                console.error("Submission Error:", error);
+                alert("An error has occured please try again later")
+                window.location.href = 'index.html';
+                sessionStorage.clear();
+                        }
         });
     }
 });
-
-function showPopup(message, type){
-    const popup = documernt.getElementById("popup");
-
-    popup.textContent = message;
-    popup.className = `popup ${type}`
-    popup.style.display = block;
-
-    setTimeout(() => {
-        popup.style.display = none;
-    },  4000);
-
-}
 
 function goBack() {
     window.history.back();

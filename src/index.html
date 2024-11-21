@@ -13,7 +13,38 @@
 </head>
 
 <body>
-  <div id="popup" class="popup"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const url = window.location.href;
+      console.log("Current URL:", url); // Show the entire URL
+  
+      const params = new URLSearchParams(window.location.search);
+      const message = params.get("popupMessage");
+      const type = params.get("popupType");
+
+  
+      if (message && type) {
+        // Create and show the popup
+        const popup = document.createElement("div");
+        popup.textContent = decodeURIComponent(message);
+        popup.className = `popup ${type}`;
+        document.body.appendChild(popup);
+        popup.style.display = 'block';
+  
+        // Automatically hide the popup after 3 seconds
+        setTimeout(() => {
+          popup.remove();
+        }, 3000);
+      } else {
+        console.log("No popup message or type found.");  // Debugging line
+      }
+  
+      // Optionally clear the query parameters from the URL
+      const urlWithoutParams = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, urlWithoutParams);
+    });
+  </script>
+  
   <!--login main page-->
   <h1 class="main-title"> JRFB Attendance Log</h1>
   <!--username post to server-->
