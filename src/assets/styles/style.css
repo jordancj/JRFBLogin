@@ -7,7 +7,13 @@ body {
   padding: 0;
 }
 
-
+footer{
+  font-size: small;
+  position: relative;
+  margin-top: 25%;
+  opacity: 60%;
+  font-weight: bold;
+}
 h1.main-title,
 #opActTitle,
 #noOpActTitle,
